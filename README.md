@@ -87,7 +87,12 @@ README.md                      # This file
 * Add more performance metrics (e.g., CAGR, Sortino Ratio)
 * Extend to multiple tickers or use portfolio backtesting framework
 
-## 📜 License
+## 📅 Author & License
+
+Created by **Art Matic Studio** – \[[ sumberagungabadijaya05@gmail.com]( mina120trf@gmail.com)]
+Licensed under the **MIT License**. See [`LICENSE`](./LICENSE) file for full details.
+
+```
 
 This project is provided for educational purposes and is licensed under the MIT License.
 
