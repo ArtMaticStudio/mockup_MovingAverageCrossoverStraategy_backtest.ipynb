@@ -1,92 +1,96 @@
-# mockup_MovingAverageCrossoverStraategy_backtest.ipynb
-mockup Moving Average Crossover Straategy back test
+# 📈 Moving Average Crossover Backtest for AAPL
 
-# 📈 Moving Average Crossover Strategy Backtest (AAPL)
+This Python script performs a simple **Moving Average Crossover** backtest on Apple Inc. (AAPL) stock data using historical data from Yahoo Finance. It also visualizes the trading signals and evaluates the performance of the strategy.
 
-This repository contains a Jupyter notebook that implements a backtest of a simple Moving Average Crossover trading strategy using historical stock data from Yahoo Finance.
+## 🧠 Strategy Overview
 
-The strategy uses two moving averages:
-- Short-term moving average (40 days)
-- Long-term moving average (100 days)
+The **Moving Average Crossover** strategy works by comparing two moving averages:
 
-Buy and sell signals are generated when the short MA crosses above or below the long MA.
+* **Short-Term Moving Average** (e.g., 40 days)
+* **Long-Term Moving Average** (e.g., 100 days)
 
----
+A **buy signal** is generated when the short-term MA crosses above the long-term MA.
+A **sell signal** occurs when the short-term MA crosses below the long-term MA.
 
-## 📌 Project Overview
+## 🛠 Features
 
-- **Ticker used**: AAPL (Apple Inc.)
-- **Period**: 2020-01-01 to 2023-12-31
-- **Data source**: [Yahoo Finance](https://finance.yahoo.com/)
-- **Tools used**: Python, `yfinance`, `pandas`, `numpy`, `matplotlib`
-- **Key Metrics Calculated**:
-  - Total Return
-  - Maximum Drawdown
-  - Percentage of Winning Days
-  - Sharpe Ratio (Annualized)
+* Downloads historical stock data via [yfinance](https://pypi.org/project/yfinance/)
+* Calculates short-term and long-term moving averages
+* Generates trading signals based on crossover
+* Simulates portfolio value with initial capital
+* Calculates performance metrics:
 
----
+  * Total return
+  * Maximum drawdown
+  * Percentage of winning days
+  * Sharpe ratio (annualized)
+* Plots price chart with buy/sell markers
 
-## 🧠 Logic Summary
+## 📦 Dependencies
 
-1. **Download data** using `yfinance`.
-2. **Calculate short and long moving averages** of the closing price.
-3. **Generate signals** based on MA crossover:
-   - Buy when short MA > long MA
-   - Sell when short MA < long MA
-4. **Simulate trades and returns**.
-5. **Evaluate performance** using common metrics.
-6. **Visualize** price chart with buy/sell signals.
+You can install the required Python packages using pip:
 
----
+```bash
+pip install yfinance pandas numpy matplotlib
+```
 
-## 🖼️ Sample Output
+## 🚀 How to Run
 
-![Strategy Plot Example](screenshot.png) <!-- Optional: Add screenshot of matplotlib output -->
+Simply execute the script in your Python environment:
 
----
+```bash
+python backtest_moving_average.py
+```
 
-## ▶️ How to Run
+Make sure to update the ticker symbol, date range, or moving average windows as needed.
 
-1. Clone this repo:
+## 🧾 Output Metrics Example
 
-   ```bash
-   git clone https://github.com/your-username/your-repo.git
-   cd your-repo
-````
+Sample output after running the backtest:
 
-2. Install dependencies:
+```
+Dropped 99 rows due to NaN values using dropna() without subset after MA calculation.
+Total Return: -5.34%
+Maximum Drawdown: -5.34%
+Percentage of Winning Days: 0.44%
+Sharpe Ratio (Annualized): -1.08
+```
 
-   ```bash
-   pip install yfinance pandas numpy matplotlib
-   ```
+## 📊 Plot Example
 
-3. Open the notebook:
+The script will generate a plot that includes:
 
-   ```bash
-   jupyter notebook mockup_MovingAverageCrossoverStraategy_backtest.ipynb
-   ```
+* Blue line: Closing price of AAPL
+* Green triangles (^): Buy signals
+* Red triangles (v): Sell signals
 
-4. Run all cells and view the output.
+This helps visualize the entry and exit points of the strategy over time.
 
----
+## 📁 File Structure
+
+```
+backtest_moving_average.py     # Main script
+README.md                      # This file
+```
 
 ## ⚠️ Notes
-* The code includes handling for:
-  * Data download errors
-  * Missing values after moving average calculation
-  * MultiIndex vs flat index column access
-* A manual workaround is used instead of `dropna(subset=...)` to avoid `KeyError`.
+
+* Yahoo Finance may return data with **MultiIndex columns** (e.g., `('Close', 'AAPL')`). The script handles both MultiIndex and flat DataFrames.
+* The script avoids `dropna(subset=['Daily_Return'])` to prevent KeyErrors and instead uses manual filtering.
+* Results will vary depending on stock ticker and selected date range.
+* This is a basic backtest — it does **not** include slippage, transaction costs, or risk management.
+
+## ✅ TODOs (optional)
+
+* Add transaction fee simulation
+* Implement trailing stop loss
+* Add more performance metrics (e.g., CAGR, Sortino Ratio)
+* Extend to multiple tickers or use portfolio backtesting framework
+
+## 📜 License
+
+This project is provided for educational purposes and is licensed under the MIT License.
 
 ---
 
-## 📄 License
-
-This project is open for learning and experimentation. You are free to copy, modify, or redistribute with attribution.
-
----
-
-## 🙌 Acknowledgements
-
-* [Yahoo Finance API](https://pypi.org/project/yfinance/)
-* Inspired by classic technical analysis strategies
+Let me know if you want a version in Bahasa Indonesia or if you'd like to convert this into a GitHub-friendly format with badges and advanced features.
